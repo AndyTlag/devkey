@@ -58,74 +58,101 @@ include_once(dirname(__FILE__) . '/conexao.php');
 
 </head>
 <body>
+
+	<?php
+
+	include_once(dirname(__FILE__) . '/cad_tarefa.php');
+
+	?>
+
 	<div class="container">
 		
 
 		<?php
 
-
 		$cSQL = "SELECT * FROM " 
 		. Config::BD_PREFIX . "tarefa  
-		ORDER BY trf_ordem ASC";
+		ORDER BY CASE trf_status 
+		WHEN 'pen' THEN 0 
+		WHEN 'exe' THEN 1 
+		WHEN 'fin' THEN 2 END, 
+		trf_ordem ASC";
 
-
+		//die($cSQL);
 
 		$oDados = mysqli_query($con, $cSQL) or die(mysqli_error($con));
-
+		$status_atual='';
 
 		while ($retorno = mysqli_fetch_assoc($oDados)){ 
+			$status = $retorno['trf_status'];
 
-			switch ($retorno['trf_status']) {
+			switch ($status) {
 
 				case 'pen':
-				?>
+				if ($status_atual != $status) {	
 
-				<ul id="sortable1" class="connectedSortable">
-					<?php
+					$status_atual= $status;
+
+					echo '<ul id="sortable1" class="connectedSortable">';
+					
+				}
+
 					echo '
 					<li class="alert alert-danger item" 
 					id="'.$retorno['trf_id'].'">' 
 					. $retorno['trf_nome'] . '
 					</li>
 					';
-					?>
-				</ul>
 
-				<?php
 				break;
 
 				case 'exe':
-				?>
 
-				<ul id="sortable2" class="connectedSortable">
-					<?php
+				if ($status_atual != $status) {	
+
+					if ($status_atual != '') {
+						echo "</ul>";
+					}
+
+					$status_atual= $status;
+
+					echo '<ul id="sortable2" class="connectedSortable">';
+					
+				}
+
 					echo '
 					<li class="alert alert-warning item" 
 					id="'.$retorno['trf_id'].'">' 
 					. $retorno['trf_nome'] . '
 					</li>';
-					?>
-				</ul>
-
-				<?php
+					
 				break;
 
 				case 'fin':
-				?>
 
-				<ul id="sortable3" class="connectedSortable">
-					<?php
+				if ($status_atual != $status) {	
+
+					if ($status_atual != '') {
+						echo "</ul>";
+					}
+
+					$status_atual= $status;
+
+					echo '<ul id="sortable3" class="connectedSortable">';
+					
+				}
 					echo '
 					<li class="alert alert-success item" 
 					id="'.$retorno['trf_id'].'">' 
 					. $retorno['trf_nome'] . '
 					</li>';
-					?>
-				</ul>
 
-				<?php
 				break;
 			}
+		}
+
+		if ($status_atual != '') {
+			echo "</ul>";
 		}
 
 
@@ -163,9 +190,9 @@ include_once(dirname(__FILE__) . '/conexao.php');
 			},
 
 			receive: function(event, ui) {
-
+				var trf_id_list = $(this).sortable('toArray').toString();
 				var receivesort = "[" + this.id + "]";
-				//alert("[" + this.id + "]");
+				//console.log("[" + this.id + "]");
 				//nome -> ui.item.html
 				//sortable id -> "[" + this.id + "]"
 				//alert("[" + this.id + "] received [" + ui.item.html() + "]");
@@ -173,7 +200,10 @@ include_once(dirname(__FILE__) . '/conexao.php');
 				$.ajax({
 					url: 'trf_ordenar_item.php',
 					type: 'POST',
-					data: {trf_status : receivesort},
+					data: {
+						trf_status : receivesort,
+						trf_id : trf_id_list
+					},
 					success: function(data) {
 
 					}
