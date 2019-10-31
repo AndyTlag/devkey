@@ -28,11 +28,7 @@ function cad_trf($con) {
     if ($oDados === TRUE) {
 
       $con->commit();
-
-      echo '<script>
-      document.location.href="index.php";
-      alert("Tarefa cadastrada com sucesso!");
-      </script>';
+      header("Location:index.php");
 
     } else {
       echo '<script>
@@ -57,5 +53,35 @@ function cad_trf($con) {
     }
   }
 } 
+
+function cad_usu($con){
+
+  if (isset($_POST['usu_nome']) && ($_POST['usu_email'])){
+
+    $con->begin_transaction();
+
+    $cSQL = "INSERT INTO " 
+    . Config::BD_PREFIX . "usuario (usu_nome, usu_email) VALUES ('" 
+    . addslashes($_POST['usu_nome']) . "', '" 
+    . addslashes($_POST['usu_email']) . "')";
+
+    $oDados = mysqli_query($con, $cSQL);
+
+    if ($oDados === TRUE) {
+
+      $con->commit();
+      header("Location:index.php");
+
+    } else {
+      echo '<script>
+      document.location.href="index.php";
+      alert("Erro: '.mysqli_error($con).'");                
+
+      </script>';
+      $con->rollback();
+    }
+  }
+}
+
 
 ?>

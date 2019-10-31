@@ -1,15 +1,3 @@
-<script>
-
-  $(function() {
-    $(".btn-toggle").click(function(e) {
-      e.preventDefault();
-      el = $(this).data('element');
-      $(el).toggle();
-    });
-  });
-
-</script>
-
 <div class="container">
 
   <form action="cadastros.php" method="post">
@@ -52,12 +40,12 @@
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div>
         <br>
 
         <button class="btn btn-success btn-block ">
-          <i class="glyphicon glyphicon-ok"></i> 
-          Gravar 
+          <i class="fa fa-check"></i> 
+           
         </button>
         <input type="hidden" name="action" value="cad_trf">
       </div>

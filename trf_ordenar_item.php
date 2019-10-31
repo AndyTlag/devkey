@@ -20,7 +20,6 @@ foreach ($arr_item as $item) {
 	}
 	$ordem++;
 }
-
 /////////////// FIM ORDEM
 
 /////////////// INICIO STATUS
@@ -28,8 +27,6 @@ foreach ($arr_item as $item) {
 
 //die("morreu");
 $trf_status = $_POST["trf_status"];
-//die("aq " . $_POST["trf_status"] . " oi");
-
 
 $trf_status = explode("[", $trf_status);
 $trf_status = explode("]", $trf_status[1]);
@@ -67,8 +64,7 @@ die();*/
 
 		$sql_sort = "UPDATE " . Config::BD_PREFIX . "tarefa 
 		SET trf_status = 'pen' 
-		WHERE trf_id=". $arr_item;
-
+		WHERE trf_id in (". $trf_id . ")";
 		$execute = $con->query($sql_sort) or die(mysqli_error($con));
 
 		break;
@@ -77,7 +73,7 @@ die();*/
 
 		$sql_sort = "UPDATE " . Config::BD_PREFIX . "tarefa 
 		SET trf_status = 'exe' 
-		WHERE trf_id=". $arr_item;
+		WHERE trf_id in (". $trf_id . ")";
 
 		$execute = $con->query($sql_sort) or die(mysqli_error($con));
 
@@ -87,8 +83,9 @@ die();*/
 
 		$sql_sort = "UPDATE " . Config::BD_PREFIX . "tarefa 
 		SET trf_status = 'fin' 
-		WHERE trf_id=". $arr_item;
+		WHERE trf_id in (". $trf_id . ")";
 
+//die($sql_sort);
 		$execute = $con->query($sql_sort) or die(mysqli_error($con));
 
 		break;
