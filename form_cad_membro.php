@@ -1,5 +1,9 @@
-<!doctype html>
-<html lang="en">
+<?php
+
+include_once(dirname(__FILE__) . '/Config.class.php');
+include_once(dirname(__FILE__) . '/conexao.php');
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -68,111 +72,102 @@
         </div> 
         <div class="app-main__outer">
             <div class="app-main__inner">
-                <div class="app-page-title">
-                    <div class="page-title-wrapper">
-                        <div class="page-title-heading">
-                            <div class="page-title-icon">
-                                <i class="pe-7s-graph text-success">
-                                </i>
-                            </div>
-                            <div>Form Layouts
-                                <div class="page-title-subheading">Build whatever layout you need with our Architect framework.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="page-title-actions">
-                            <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
-                                <i class="fa fa-star"></i>
-                            </button>
-                            <div class="d-inline-block dropdown">
-                                <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-                                    <span class="btn-icon-wrapper pr-2 opacity-7">
-                                        <i class="fa fa-business-time fa-w-20"></i>
-                                    </span>
-                                    Buttons
-                                </button>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <i class="nav-link-icon lnr-inbox"></i>
-                                                <span>
-                                                    Inbox
-                                                </span>
-                                                <div class="ml-auto badge badge-pill badge-secondary">86</div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <i class="nav-link-icon lnr-book"></i>
-                                                <span>
-                                                    Book
-                                                </span>
-                                                <div class="ml-auto badge badge-pill badge-danger">5</div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <i class="nav-link-icon lnr-picture"></i>
-                                                <span>
-                                                    Picture
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a disabled href="javascript:void(0);" class="nav-link disabled">
-                                                <i class="nav-link-icon lnr-file-empty"></i>
-                                                <span>
-                                                    File Disabled
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>    </div>
-                    </div>            
+                <div class="tab-content">
+                    <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+                                <h5 class="card-title">Cadastrar Membro</h5>
+                                <form action="cadastros.php" method="post">
+                                    <div class="form-row">
 
-                    <div class="tab-content">
-                        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                            <div class="main-card mb-3 card">
-                                <div class="card-body"><h5 class="card-title">Grid Rows</h5>
-                                    <form class="">
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="position-relative form-group"><label for="exampleEmail11" class="">Email</label><input name="email" id="exampleEmail11" placeholder="with a placeholder" type="email" class="form-control"></div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="position-relative form-group"><label for="examplePassword11" class="">Password</label><input name="password" id="examplePassword11" placeholder="password placeholder" type="password"
-                                                 class="form-control"></div>
-                                             </div>
-                                         </div>
-                                         <div class="position-relative form-group"><label for="exampleAddress" class="">Address</label><input name="address" id="exampleAddress" placeholder="1234 Main St" type="text" class="form-control"></div>
-                                         <div class="position-relative form-group"><label for="exampleAddress2" class="">Address 2</label><input name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" type="text" class="form-control">
-                                         </div>
-                                         <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="position-relative form-group"><label for="exampleCity" class="">City</label><input name="city" id="exampleCity" type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="position-relative form-group"><label for="exampleState" class="">State</label><input name="state" id="exampleState" type="text" class="form-control"></div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="position-relative form-group"><label for="exampleZip" class="">Zip</label><input name="zip" id="exampleZip" type="text" class="form-control"></div>
+                                        <div class="col-md-6">
+                                            <div class="position-relative form-group">
+                                                <label for="usu_nome" class="">
+                                                    Nome
+                                                </label>
+                                                <input name="usu_nome" id="usu_nome" placeholder="Nome do Usuário" type="text" class="form-control" minlength="3" required>
                                             </div>
                                         </div>
-                                        <div class="position-relative form-check"><input name="check" id="exampleCheck" type="checkbox" class="form-check-input"><label for="exampleCheck" class="form-check-label">Check me out</label></div>
-                                        <button class="mt-2 btn btn-primary">Sign in</button>
-                                    </form>
-                                </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="position-relative form-group">
+                                                <label for="usu_email" class="">
+                                                    Email
+                                                </label>
+                                                <input name="usu_email" id="usu_email" placeholder="E-mail do Usuário" type="email" class="form-control" minlength="3" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <button class="mt-2 btn btn-success">Cadastrar</button>
+                                    <input type="hidden" name="action" value="cad_usu">
+
+                                </form>
                             </div>
+
+                            <div class="col-md-12">
+                                        <div class="main-card mb-6 card">
+
+                            <div class="card-body">
+
+                                <div class="col-md-12">
+                                    <div class="main-card mb-6 card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Lista de Usuários</h5>
+                                            <ul class="list-group">
+
+
+                                                <?php
+
+
+                                                $cSQL = "SELECT * FROM " .Config::BD_PREFIX. "usuario";
+
+                                                $oDados = mysqli_query($con, $cSQL);
+
+                                                while ($registro = mysqli_fetch_assoc($oDados)) {
+
+
+
+                                                    echo '
+
+                                                    <li class="list-group-item">
+                                                    <h5 class="list-group-item-heading">'
+                                                    .$registro['usu_nome'].
+                                                    '</h5>
+
+                                                    <p class="list-group-item-text">'.$registro['usu_email'].'
+
+                                                    </p>
+                                                    </li>
+
+                                                    '
+                                                    ;
+
+
+                                                    
+
+                                                }
+
+
+                                                ?>
+
+                                                                        
+                                            </ul>
+                                    
+
+                            </div>
+
 
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="./assets/scripts/main.js"></script></body>
-    </html>
+</div>
+<script type="text/javascript" src="./assets/scripts/main.js"></script></body>
+</html>

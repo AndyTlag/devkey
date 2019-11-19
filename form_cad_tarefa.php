@@ -22,11 +22,11 @@ include_once(dirname(__FILE__) . '/conexao.php');
     <body>
         <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 
-           <?php 
-           include_once(dirname(__FILE__) . '/menu_superior.html');
-           ?>
+         <?php 
+         include_once(dirname(__FILE__) . '/menu_superior.html');
+         ?>
 
-           <div class="app-main">
+         <div class="app-main">
             <div class="app-sidebar sidebar-shadow bg-night-fade sidebar-text-dark">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
@@ -66,117 +66,88 @@ include_once(dirname(__FILE__) . '/conexao.php');
             </div> 
             <div class="app-main__outer">
                 <div class="app-main__inner">
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-heading">
-                                <div class="page-title-icon">
-                                    <i class="pe-7s-graph text-success">
-                                    </i>
-                                </div>
-                                <div>Form Layouts
-                                    <div class="page-title-subheading">Build whatever layout you need with our Architect framework.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="page-title-actions">
-                                <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
-                                    <i class="fa fa-star"></i>
-                                </button>
-                                <div class="d-inline-block dropdown">
-                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-                                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                                            <i class="fa fa-business-time fa-w-20"></i>
-                                        </span>
-                                        Buttons
-                                    </button>
-                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link">
-                                                    <i class="nav-link-icon lnr-inbox"></i>
-                                                    <span>
-                                                        Inbox
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Book
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link">
-                                                    <i class="nav-link-icon lnr-picture"></i>
-                                                    <span>
-                                                        Picture
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a disabled href="javascript:void(0);" class="nav-link disabled">
-                                                    <i class="nav-link-icon lnr-file-empty"></i>
-                                                    <span>
-                                                        File Disabled
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>
-                    </div>            
-
-
                     <div class="tab-content">
-
-
                       <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
                         <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Grid</h5>
-                                <form class="">
+                            <div class="card-body"><h5 class="card-title">Cadastrar Tarefa</h5>
+                                <form action="cadastros.php" method="post">
 
-                                    <div class="position-relative row form-group"><label for="exampleSelect" class="col-sm-2 col-form-label">Membro</label>
-                                        <div class="col-sm-10"><select name="select" id="exampleSelect" class="form-control"></select></div>
-                                    </div>
+                                    <div class="position-relative row form-group">
+                                        <label for="exampleSelect" class="col-sm-2 col-form-label">
+                                            Membro
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <select name="trf_usu" id="trf_usu" class="form-control" required>
 
-                                    <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Título</label>
-                                        <div class="col-sm-10"><input name="email" id="exampleEmail" placeholder="with a placeholder" type="text" class="form-control"></div>
-                                    </div>
+                                               <option value=0>
+                                                Responsável pela tarefa
+                                            </option>
 
-                                    <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Descrição</label>
-                                        <div class="col-sm-10"><textarea name="text" id="exampleText" class="form-control"></textarea></div>
-                                    </div>
+                                            <?php
 
-                                    <div class="position-relative row form-check">
-                                        <div class="col-sm-10 offset-sm-2">
-                                            <button class="btn btn-secondary">Submit</button>
-                                        </div>
+                                            $cSQL1 = "SELECT usu.usu_nome, usu.usu_id 
+                                            FROM "       . Config::BD_PREFIX . "usuario usu";
+
+                                            $oDados = mysqli_query($con, $cSQL1);
+
+                                            while ($reg = mysqli_fetch_assoc($oDados)){
+
+                                                echo  "<option value='" . $reg['usu_id'] . "'>" . $reg['usu_nome'] . "</option>";
+
+                                            }
+
+                                            ?>
+
+                                        </select>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+
+                                <div class="position-relative row form-group">
+                                    <label for="trf_nome" class="col-sm-2 col-form-label">
+                                        Título
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input name="trf_nome" id="trf_nome" placeholder="Nome da Tarefa" type="text" class="form-control" minlength="3" required>
+                                    </div>
+                                </div>
+
+                                <div class="position-relative row form-group">
+                                    <label for="trf_descricao" class="col-sm-2 col-form-label">
+                                        Descrição
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <textarea id="trf_descricao" name="trf_descricao" class="form-control"  minlength="3" required>
+
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="action" value="cad_trf">
+
+                                <div class="position-relative row form-check">
+                                    <div class="col-sm-10 offset-sm-2">
+                                        <button class="btn btn-success">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
                 </div>
 
-
-
-                <?php
-
-                include_once(dirname(__FILE__) . '/tarefas.php');
-
-                ?>
-
-
             </div>
+
+
+
+            <?php
+
+            include_once(dirname(__FILE__) . '/tarefas.php');
+
+            ?>
+
+
         </div>
     </div>
+</div>
 </div>
 
 

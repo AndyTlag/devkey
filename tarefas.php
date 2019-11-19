@@ -21,12 +21,6 @@ include_once(dirname(__FILE__) . '/conexao.php');
 </head>
 <body>
 
-	<?php
-
-	include_once(dirname(__FILE__) . '/cad_usuario.php');
-	include_once(dirname(__FILE__) . '/cad_tarefa.php');
-
-	?>
 
 	<div class="container" id="conteudo">		
 

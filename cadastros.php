@@ -28,11 +28,11 @@ function cad_trf($con) {
     if ($oDados === TRUE) {
 
       $con->commit();
-      header("Location:index.php");
+      header("Location:form_cad_tarefa.php");
 
     } else {
       echo '<script>
-      document.location.href="index.php";
+      document.location.href="form_cad_tarefa.php";
       alert("Erro: '.mysqli_error($con).'");              	
 
       </script>';
@@ -42,12 +42,12 @@ function cad_trf($con) {
 
     if ($_POST['trf_usu'] == 0) {
       echo '<script>
-      document.location.href="index.php";
+      document.location.href="form_cad_tarefa.php";
       alert("Selecione o usuário");
       </script>';
     } else {
       echo '<script>
-      document.location.href="index.php";
+      document.location.href="form_cad_tarefa.php";
       alert("Não foi possivel cadastrar tarefa!");
       </script>';
     }
@@ -70,11 +70,11 @@ function cad_usu($con){
     if ($oDados === TRUE) {
 
       $con->commit();
-      header("Location:index.php");
+      header("Location:form_cad_membro.php");
 
     } else {
       echo '<script>
-      document.location.href="index.php";
+      document.location.href="form_cad_membro.php";
       alert("Erro: '.mysqli_error($con).'");                
 
       </script>';
