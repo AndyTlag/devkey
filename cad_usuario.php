@@ -12,9 +12,6 @@
 
 
 <div class="container">
-  <h3>
-    Devkey - Organograma
-  </h3>
   <br>
   <div class="form-group">
     <button type="button" class="btn btn-success btn-toggle" data-element="#cad_usu">
