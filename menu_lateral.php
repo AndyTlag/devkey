@@ -1,4 +1,4 @@
- <div class="app-sidebar__inner">
+<div class="app-sidebar__inner">
     <ul class="vertical-nav-menu">
         
         <li>

@@ -1,3 +1,10 @@
+<?php
+
+include_once(dirname(__FILE__) . '/Config.class.php');
+include_once(dirname(__FILE__) . '/conexao.php');
+
+?>
+
         <div class="app-header header-shadow bg-night-fade header-text-dark">
             <div class="app-header__logo">
                 <div class="logo-src"></div>

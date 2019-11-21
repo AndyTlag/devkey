@@ -23,7 +23,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
         <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 
          <?php 
-         include_once(dirname(__FILE__) . '/menu_superior.html');
+         include_once(dirname(__FILE__) . '/menu_superior.php');
          ?>
 
          <div class="app-main">
@@ -60,7 +60,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
                 </div>    
                 <div class="scrollbar-sidebar">
                     <?php 
-                    include_once(dirname(__FILE__) . '/menu_lateral.html');
+                    include_once(dirname(__FILE__) . '/menu_lateral.php');
                     ?>
                 </div>
             </div> 
