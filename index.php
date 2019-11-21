@@ -160,11 +160,11 @@ include_once(dirname(__FILE__) . '/conexao.php');
                 <div class="card mb-3 widget-content bg-happy-itmeo">
                     <div class="widget-content-wrapper text-white">
                         <div class="widget-content-left">
-                            <div class="widget-heading">X</div>
-                            <div class="widget-subheading"> X</div>
+                            <div class="widget-heading">Horas Trabalhadas</div>
+                            <div class="widget-subheading">Horas totais do projeto</div>
                         </div>
                         <div class="widget-content-right">
-                            <div class="widget-numbers text-white"><span>X%</span></div>
+                            <div class="widget-numbers text-white"><span>X horas</span></div>
                         </div>
                     </div>
                 </div>
