@@ -29,13 +29,7 @@
                         </i>Modals
                     </a>
                 </li>
-                <li>
-                    <a href="components-progress-bar.html">
-                        <i class="metismenu-icon">
-                        </i>Progress Bar
-                    </a>
-                </li>
-                
+                             
                 
                 <li>
                     <a href="components-calendar.html">
