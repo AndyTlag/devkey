@@ -5,7 +5,8 @@ include_once(dirname(__FILE__) . '/conexao.php');
 
 ?>
 
-        <div class="app-header header-shadow bg-night-fade header-text-dark">
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar">
+        <div class="app-header header-shadow bg-plum-plate header-text-light">
             <div class="app-header__logo">
                 <div class="logo-src"></div>
                 <div class="header__pane ml-auto">
@@ -37,10 +38,16 @@ include_once(dirname(__FILE__) . '/conexao.php');
                 </span>
             </div>    <div class="app-header__content">
                 <div class="app-header-left">
+                    <ul class="header-menu nav">
+                        <li class="nav-item">
+                            <a href="index.php" class="nav-link">
+                                <h3>Cronograma - Sistema PHP</h3>
+                            </a>
+                        </li>
 
-                    <h5>
-                        Cronograma - Sistema PHP
-                    </h5>
+                    </ul>
+
+
                     <!--<div class="search-wrapper">
                         <div class="input-holder">
                             <input type="text" class="search-input" placeholder="Type to search">
@@ -69,7 +76,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
                         </li>
                     </ul>  -->      
                 </div>
-                    
+
                     <!--<div class="app-header-right">
                         <div class="header-btn-lg pr-0">
                             <div class="widget-content p-0">
@@ -103,5 +110,48 @@ include_once(dirname(__FILE__) . '/conexao.php');
                             </div>
                         </div>        
                     </div>-->
+                </div>
+            </div>   
+
+
+            <div class="app-main">
+                <div class="app-sidebar sidebar-shadow bg-plum-plate sidebar-text-light">
+                    <div class="app-header__logo">
+                        <div class="logo-src"></div>
+                        <div class="header__pane ml-auto">
+                            <div>
+                                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>   
+                    <div class="app-header__mobile-menu">
+                        <div>
+                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="app-header__menu">
+                        <span>
+                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                                <span class="btn-icon-wrapper">
+                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                                </span>
+                            </button>
+                        </span>
+                    </div>    
+                    <div class="scrollbar-sidebar">
+                        <?php 
+
+                        include_once(dirname(__FILE__) . '/menu_lateral.php');
+
+                        ?>
+
+                    </div>
+                </div> 

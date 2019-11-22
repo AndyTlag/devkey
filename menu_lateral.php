@@ -8,42 +8,18 @@
             </a>
         </li>
         <li class="app-sidebar__heading">Ações</li>
-        <li>
-            <a href="#">
-                <i class="metismenu-icon pe-7s-car"></i>
-                Components
-                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-            </a>
-            <ul>
-             
-                <li>
-                    <a href="components-accordions.html">
-                        <i class="metismenu-icon">
-                        </i>Accordions
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="components-modals.html">
-                        <i class="metismenu-icon">
-                        </i>Modals
-                    </a>
-                </li>
-                             
-                
-                <li>
-                    <a href="components-calendar.html">
-                        <i class="metismenu-icon">
-                        </i>Calendar
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
+
         <li  >
             <a href="form_cad_tarefa.php">
                 <i class="metismenu-icon pe-7s-display2"></i>
                 Tarefas
+            </a>
+        </li>
+
+        <li  >
+            <a href="editar_tarefa.php">
+                <i class="metismenu-icon pe-7s-display2"></i>
+                Editar Tarefas
             </a>
         </li>
 
