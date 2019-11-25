@@ -1,46 +1,41 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <title>DevKey - Cronograma</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
-    <meta name="msapplication-tap-highlight" content="no">
+    
+    <script src="js/jquery-3.2.1.min.js"></script>
 
-<link href="./main.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <?php 
+    include_once(dirname(__FILE__) . '/assets/head.html');
+    ?>
 
-<style type="text/css">
 
-    #visualization_wrap {
+    <style type="text/css">
 
-        position: relative;
-        padding-bottom: 80%;
-        height: 0;
-        overflow:hidden;
-    }
-    #Status_Atividade {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width:100%;
-        height:100%;
-    }
-</style>
+        #visualization_wrap {
+
+            position: relative;
+            padding-bottom: 80%;
+            height: 0;
+            overflow:hidden;
+        }
+        #Status_Atividade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+        }
+    </style>
 </head>
 
 <body>
 
-   <?php 
-   include_once(dirname(__FILE__) . '/menu_superior.php');
-   ?>
-   <div class="app-main__outer">
+ <?php 
+ include_once(dirname(__FILE__) . '/menu_superior.php');
+ ?>
+ <div class="app-main__outer">
     <div class="app-main__inner">
-       <div class="row">
+     <div class="row">
 
         <?php 
 
@@ -59,6 +54,7 @@
         $total_trf = 0;
         $resultado = [];
 
+
         while($qtd_status_a = mysqli_fetch_assoc($qtd_status)){
 
             $total_trf += $qtd_status_a['qtd'];
@@ -69,15 +65,15 @@
 
         foreach ($resultado as $key => $value) {
 
-           $resultado[$key]['perc'] = $resultado[$key]['qtd']/$total_trf*100;
-       }
+         $resultado[$key]['perc'] = $resultado[$key]['qtd']/$total_trf*100;
+     }
 
         //echo  $resultado['pen']['qtd'] . "oioioioi";
-               //var_dump($resultado);
+          //var_dump($resultado);
 
-       ?>
+     ?>
 
-       <div class="col-md-6 col-xl-4">
+     <div class="col-md-6 col-xl-4">
         <div class="card mb-3 widget-content bg-sunny-morning">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
@@ -140,11 +136,46 @@
                 <div class="widget-content-outer">
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left pr-2 fsize-1">
-                            <div class="widget-numbers mt-0 fsize-3 text-danger"><?php echo floor($resultado['pen']['perc'] * 10)/10 . "%" ?></div>
+                            <div class="widget-numbers mt-0 fsize-3 text-danger">
+                                <?php 
+
+                                if(empty($resultado['pen']['perc'])){ 
+                                    echo 0 ."%";
+                                } else{
+                                    echo floor($resultado['pen']['perc'] * 10)/10 ."%";
+                                }
+
+                                ?>
+
+                            </div>
                         </div>
                         <div class="widget-content-right w-100">
                             <div class="progress-bar-xs progress">
-                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="<?php echo number_format($resultado['pen']['perc']) ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format($resultado['pen']['perc']) ?>%;"></div>
+                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="
+                                <?php 
+
+
+                                if(empty($resultado['pen']['perc'])){ 
+                                    echo 0;
+                                    } else{
+                                        echo number_format($resultado['pen']['perc']);
+                                    }
+
+
+                                    ?>" aria-valuemin="0" aria-valuemax="100" style="width: 
+                                    <?php 
+
+
+                                    if(empty($resultado['pen']['perc'])){ 
+                                        echo 0;
+                                    } else{
+                                        echo number_format($resultado['pen']['perc']);
+                                    }
+
+
+                                    ?> %;">
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -161,11 +192,46 @@
                 <div class="widget-content-outer">
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left pr-2 fsize-1">
-                            <div class="widget-numbers mt-0 fsize-3 text-warning"><?php echo floor($resultado['exe']['perc']* 10)/10 . "%" ?></div>
+                            <div class="widget-numbers mt-0 fsize-3 text-warning">
+                                <?php 
+
+                                if(empty($resultado['exe']['perc'])){ 
+                                    echo 0 ."%";
+                                } else{
+                                    echo floor($resultado['exe']['perc'] * 10)/10 ."%";
+                                }
+
+                                ?>
+
+                            </div>
                         </div>
                         <div class="widget-content-right w-100">
                             <div class="progress-bar-xs progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo number_format($resultado['exe']['perc']) ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format($resultado['exe']['perc']) ?>%;"></div>
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="
+                                <?php 
+
+
+                                if(empty($resultado['exe']['perc'])){ 
+                                    echo 0;
+                                    } else{
+                                        echo number_format($resultado['exe']['perc']);
+                                    }
+
+
+                                    ?>" aria-valuemin="0" aria-valuemax="100" style="width:
+                                    <?php 
+
+
+                                    if(empty($resultado['exe']['perc'])){ 
+                                        echo 0;
+                                    } else{
+                                        echo number_format($resultado['exe']['perc']);
+                                    }
+
+
+                                    ?> %;">
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,11 +248,47 @@
                 <div class="widget-content-outer">
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left pr-2 fsize-1">
-                            <div class="widget-numbers mt-0 fsize-3 text-success"><?php echo floor($resultado['fin']['perc']* 10)/10 . "%" ?></div>
+                            <div class="widget-numbers mt-0 fsize-3 text-success">
+
+                                <?php 
+
+                                if(empty($resultado['fin']['perc'])){ 
+                                    echo 0 ."%";
+                                } else{
+                                    echo floor($resultado['fin']['perc'] * 10)/10 ."%";
+                                }
+
+                                ?>
+
+                            </div>
                         </div>
                         <div class="widget-content-right w-100">
                             <div class="progress-bar-xs progress">
-                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?php echo number_format($resultado['fin']['perc']) ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format($resultado['fin']['perc']) ?>%;"></div>
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="
+                                <?php 
+
+
+                                if(empty($resultado['fin']['perc'])){ 
+                                    echo 0;
+                                    } else{
+                                        echo number_format($resultado['fin']['perc']);
+                                    }
+
+
+                                    ?>" aria-valuemin="0" aria-valuemax="100" style="width:
+                                    <?php 
+
+
+                                    if(empty($resultado['fin']['perc'])){ 
+                                        echo 0;
+                                    } else{
+                                        echo number_format($resultado['fin']['perc']);
+                                    }
+
+
+                                    ?> %;">
+
+                                </div>
                             </div>
                         </div>
                     </div>
