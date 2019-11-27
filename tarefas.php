@@ -25,8 +25,16 @@ include_once(dirname(__FILE__) . '/conexao.php');
 </head>
 <body>
 
+	<div class="row">
+		
+		<div class="col-md-4 text-center">Pendentes</div>		
+		<div class="col-md-4 text-center">Executando</div>
+		<div class="col-md-4 text-center">Finalizadas</div>
 
-	<div class="container" id="conteudo">		
+	</div>
+
+	<div class="container" id="conteudo">
+
 
 		<?php
 
@@ -73,7 +81,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
 					if ($status_atual != $status) {	
 
 						if ($status_atual != '') {
-							echo "</ul>";
+							echo '</ul>';
 						}
 
 						$status_atual= $status;
@@ -97,7 +105,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
 					if ($status_atual != $status) {	
 
 						if ($status_atual != '') {
-							echo "</ul>";
+							echo '</ul>';
 						}
 
 						$status_atual= $status;
@@ -118,7 +126,7 @@ include_once(dirname(__FILE__) . '/conexao.php');
 			}
 
 			if ($status_atual != '') {
-				echo "</ul>";
+				echo '</ul>';
 			}
 
 		?>		
